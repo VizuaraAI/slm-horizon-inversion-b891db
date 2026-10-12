@@ -1,0 +1,20 @@
+# Core: the horizon math, configs and tests only need these three.
+numpy>=1.26
+pyyaml>=6.0
+pytest>=8.0
+
+# Running real small language models and training the step verifier.
+torch>=2.4
+transformers>=4.46
+accelerate>=1.0
+datasets>=3.0
+sentencepiece>=0.2
+tqdm>=4.66
+
+# Analysis and figures.
+pandas>=2.2
+scipy>=1.13
+matplotlib>=3.9
+
+# Optional, much faster batched rollouts on a GPU.
+# vllm>=0.6

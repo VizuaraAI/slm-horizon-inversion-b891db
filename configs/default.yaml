@@ -1,0 +1,25 @@
+# Default configuration for one evaluation cell.
+# Command line flags on src/run_eval.py override anything set here.
+
+# "simulated:<p_base>:<recovery>:<decay>" runs the estimator check with no GPU.
+# recovery 0 means one wrong step is fatal, so S_N is exactly p_base ** N.
+# Swap in a hub id once the pipeline is working, for example
+# Qwen/Qwen2.5-1.5B-Instruct or meta-llama/Llama-3.2-3B-Instruct.
+model: simulated:0.92:0.0
+
+family: synthetic          # synthetic | gsm8k | musique
+amplifier: greedy          # greedy | vote_k3 | vote_k5 | vote_k9 | rerank_k5 | rerank_retry
+
+# Synthetic family only: which horizons to generate and how many tasks each.
+horizons: [2, 4, 8, 12, 16]
+per_horizon: 25
+
+# Real datasets only: cap on the number of tasks pulled from the hub.
+limit: 200
+
+# Path to a trained step verifier, needed by rerank and retry amplifiers.
+verifier: null
+
+device: cpu                # cpu | cuda | auto
+out_dir: results
+seed: 0
